@@ -6,15 +6,19 @@ on:
       rollback_to:
         description: "Deployment ID to roll back to"
         required: true
+        type: string
       service:
         description: "Service name"
         required: true
+        type: string
       environment:
         description: "Environment"
         required: true
+        type: string
       execution_id:
         description: "Kestra execution id"
         required: false
+        type: string
 
 jobs:
   rollback:
