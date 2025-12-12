@@ -1,0 +1,39 @@
+name: Rollback Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      rollback_to:
+        description: "Deployment ID to roll back to"
+        required: true
+      service:
+        description: "Service name"
+        required: true
+      environment:
+        description: "Environment"
+        required: true
+      execution_id:
+        description: "Kestra execution id"
+        required: false
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show inputs
+        run: |
+          echo "Rollback to: ${{ github.event.inputs.rollback_to }}"
+          echo "Service: ${{ github.event.inputs.service }}"
+          echo "Environment: ${{ github.event.inputs.environment }}"
+          echo "ExecutionID: ${{ github.event.inputs.execution_id }}"
+
+      - name: Simulate rollback action
+        run: |
+          echo "Simulating rollback: switching to deployment ${{ github.event.inputs.rollback_to }}"
+          sleep 2
+          echo "Rollback simulated successfully."
+
+      - name: Report deployment status to GitHub (optional)
+        run: |
+          # If you want to record a deployment status, use the deployments API below (needs a token).
+          echo "Would post deployment status here."
