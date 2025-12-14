@@ -19,6 +19,14 @@ on:
         description: "Kestra execution id"
         required: false
         type: string
+      reason:
+        description: "Reason for rollback"
+        required: false
+        type: string
+      confidence:
+        description: "AI confidence score"
+        required: false
+        type: string
 
 jobs:
   rollback:
